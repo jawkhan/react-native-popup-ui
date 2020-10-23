@@ -8,6 +8,7 @@ class Popup extends Component {
 	static popupInstance
 
 	static show({ ...config }) {
+		console.log(...config);
 		this.popupInstance.start(config)
 	}
 
@@ -23,7 +24,6 @@ class Popup extends Component {
 	}
 
 	start({ ...config }){
-			console.log(...config);
 		this.setState({
 			title: config.title,
 			type: config.type,
