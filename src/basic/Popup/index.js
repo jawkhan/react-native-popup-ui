@@ -26,14 +26,14 @@ class Popup extends Component {
 		this.setState({
 			title: config.title,
 			type: config.type,
-			icon: config.icon !== undefined ? config.icon : false,
+			icon: config.icon !== 'undefined' ? config.icon : false,
 			textBody: config.textBody,
-			button: config.button !== undefined ? config.button : true,
+			button: config.button !== 'undefined' ? config.button : true,
 			buttonText: config.buttonText || 'Ok',
-			callback: config.callback !== undefined ? config.callback : this.defaultCallback(),
+			callback: config.callback !== 'undefined' ? config.callback : this.defaultCallback(),
 			background: config.background || 'rgba(0, 0, 0, 0.5)',
 			timing: config.timing,
-			autoClose: config.autoClose !== undefined ? config.autoClose : false
+			autoClose: config.autoClose !== 'undefined' ? config.autoClose : false
 		})
 
 		Animated.sequence([
@@ -112,7 +112,7 @@ class Popup extends Component {
 			el = <Text></Text>
 		}
 		return(
-			<Animated.View 
+			<Animated.View
 				ref={c => this._root = c}
 				style={[styles.Container, {
 					backgroundColor: background || 'transparent',
@@ -121,21 +121,21 @@ class Popup extends Component {
 						{ translateY: this.state.positionView }
 					]
 				}]}>
-				<Animated.View 
+				<Animated.View
 					onLayout={event => {
 						this.setState({ popupHeight: event.nativeEvent.layout.height })
 					}}
 					style={[styles.Message, {
 						transform: [
 							{ translateY: this.state.positionPopup }
-						] 
+						]
 					}]}
-				
+
 			>
 				<View style={styles.Header} />
 					{
 						this.state.icon ? ( this.state.icon ) :
-						<Image 
+						<Image
 							source={this.handleImage(type)}
 							resizeMode="contain"
 							style={styles.Image}
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		top: 0,
 		left: 0
-	},  
+	},
 	Message: {
 		maxWidth: 300,
 		width: 230,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
 	Content: {
 		padding: 20,
 		alignItems: 'center'
-	},  
+	},
 	Header: {
 		height: 230,
 		width: 230,
@@ -185,9 +185,9 @@ const styles = StyleSheet.create({
 		marginTop: -120
 	},
 	Image: {
-		width: 150, 
-		height: 80, 
-		position: 'absolute', 
+		width: 150,
+		height: 80,
+		position: 'absolute',
 		top: 20
 	},
 	Title: {
